@@ -1,0 +1,10 @@
+#+AUTHOR: Daniel Persson
+#+EMAIL: daniel@silvertejp.org
+
+* Git Demo Tools
+  Git Demo Tools is a suite of tools useful for teaching and demoing
+  [[https://git-scm.com/][git]].
+
+* Installation
+  To install the tools, clone this repository and add the bin
+  directory to your =$PATH=.
