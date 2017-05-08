@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+    max_lines=20;
+else
+    max_lines=$1;
+fi
+
+if [ -z $2]; then
+    update_interval=1;
+else
+    update_interval=$2;
+fi
+
+while :
+do
+    clear;
+    git log --graph --abbrev-commit --decorate --date=relative --oneline --all -n $max_lines;
+    sleep $update_interval;
+done

@@ -5,6 +5,16 @@
   Git Demo Tools is a suite of tools useful for teaching and demoing
   [[https://git-scm.com/][git]].
 
+** Live log
+   Live log is started with the =git livelog= command, and will start
+   a continuously updating git tree with enough information to make it
+   useful, but still sparse enough to fit on a screen next to a shell.
+
+   The command takes two parameters, the maximum number of entries
+   (lines) to show, and the update interval in seconds. The default
+   number of lines is 20, and the default update interval is 1 second.
+
+
 * Installation
   To install the tools, clone this repository and add the bin
   directory to your =$PATH=.
