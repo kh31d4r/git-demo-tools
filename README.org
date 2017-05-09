@@ -14,7 +14,18 @@
    (lines) to show, and the update interval in seconds. The default
    number of lines is 20, and the default update interval is 1 second.
 
+** Repo switcher
+   The =git repo= command takes the name of an example repository as
+   an argument, and will instantly replace the current repository with
+   the specified example.
+
+*** Example repository structure
+    Repositories are stored in the path specified by =$EXAMPLEREPOS=,
+    and should consist of a directory (the name of the directory will
+    be the name of the example) containing a bare repository.
+
 
 * Installation
-  To install the tools, clone this repository and add the bin
-  directory to your =$PATH=.
+  - Clone this repository and add the bin directory to your =$PATH=.
+  - Update =$EXAMPLEREPOS= to point to the directory with your
+    examples.
