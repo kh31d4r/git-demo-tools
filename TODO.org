@@ -9,3 +9,4 @@
   Keep a description of each repo in a file in =.git=.
   - Write the description when saving.
   - Show the description when listing repos.
+* Proper packaging
