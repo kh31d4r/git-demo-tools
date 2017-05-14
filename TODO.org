@@ -1,5 +1,3 @@
-* Save repo example
-  Save current repo in =$EXAMPLEREPOS= with name given by argument.
 * List repo examples
   Show all available repos in =$EXAMPLEREPOS=.
 * Safety check

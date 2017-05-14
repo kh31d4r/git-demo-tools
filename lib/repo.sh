@@ -30,3 +30,11 @@ replace_current_repo()
     git pull -q origin master;
     git remote rm origin;
 }
+
+save_current_repo()
+{
+    repo_basedir=$EXAMPLEREPOS/$1;
+    rm -rf $repo_basedir;
+    mkdir -p $repo_basedir;
+    cp -r .git/* $repo_basedir;
+}
