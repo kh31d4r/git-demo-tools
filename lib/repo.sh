@@ -2,7 +2,7 @@ find_repo_root()
 {
     start_dir=$PWD;
 
-    if [ -d .git ]; then
+    if is_repo ".git"; then
         return;
     fi
     if [ $PWD = "/" ]; then
@@ -42,8 +42,14 @@ save_current_repo()
 list_repos()
 {
     for dir in $EXAMPLEREPOS/*; do
-        if [ -d "$dir/refs" ] && [ -d "$dir/objects" ] && [ -f "$dir/HEAD" ]; then
+        if is_repo $dir; then
             echo $(basename $dir);
         fi
     done
+}
+
+is_repo()
+{
+    dir=$1
+    [ -d "$dir/refs" ] && [ -d "$dir/objects" ] && [ -f "$dir/HEAD" ];
 }
