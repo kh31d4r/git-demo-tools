@@ -1,11 +1,11 @@
 find_repo_root()
 {
-    start_dir=$PWD;
+    start_dir="$PWD";
 
     if is_repo ".git"; then
         return;
     fi
-    if [ $PWD = "/" ]; then
+    if [ "$PWD" = "/" ]; then
         echo "Not in a git repository";
         exit 1;
     fi
@@ -25,28 +25,28 @@ init_repo()
 replace_current_repo()
 {
     repo=".git";
-    if ! is_example_repo $repo; then
+    if ! is_example_repo "$repo"; then
        echo "Not an example repo!";
        exit 1;
     fi
 
-    rm -rf $repo *;
+    rm -rf "$repo" *;
     init_repo;
-    cp -r $EXAMPLEREPOS/$1/repotools .git;
-    git remote add origin $EXAMPLEREPOS/$1;
+    cp -r "$EXAMPLEREPOS/$1/repotools" .git;
+    git remote add origin "$EXAMPLEREPOS/$1";
     git pull -q origin master;
     git remote rm origin;
 }
 
 save_current_repo()
 {
-    repo_basedir=$EXAMPLEREPOS/$1;
+    repo_basedir="$EXAMPLEREPOS/$1";
     description="$2";
     rm -rf "$repo_basedir";
     mkdir -p "$repo_basedir";
     mkdir -p .git/repotools;
     echo "$description" > .git/repotools/description;
-    cp -r .git/* $repo_basedir;
+    cp -r .git/* "$repo_basedir";
 }
 
 list_repos()
@@ -62,7 +62,7 @@ list_repos()
 
 is_repo()
 {
-    dir=$1
+    dir="$1"
     [ -d "$dir/refs" ] && [ -d "$dir/objects" ] && [ -f "$dir/HEAD" ];
 }
 
