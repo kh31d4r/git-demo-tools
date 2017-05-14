@@ -2,17 +2,11 @@
 
 basedir=$(dirname "$0");
 . $basedir/../lib/repo.sh;
+. $basedir/../lib/arguments.sh;
 
-if [ -z $EXAMPLEREPOS ]; then
-    echo '$EXAMPLEREPOS not set!';
-    exit 1;
-fi
-
-if [ -z $1 ]; then
-    echo 'No example repo name given';
-    exit 1;
-fi
-
+ensure_config;
+ensure_notempty "repo-name" $1;
+new_repo=$1;
 
 find_repo_root;
-replace_current_repo $1;
+replace_current_repo $new_repo;
