@@ -24,8 +24,15 @@ init_repo()
 
 replace_current_repo()
 {
-    rm -rf .git *;
+    repo=".git";
+    if ! is_example_repo $repo; then
+       echo "Not an example repo!";
+       exit 1;
+    fi
+
+    rm -rf $repo *;
     init_repo;
+    cp -r $EXAMPLEREPOS/$1/repotools .git;
     git remote add origin $EXAMPLEREPOS/$1;
     git pull -q origin master;
     git remote rm origin;
@@ -57,6 +64,12 @@ is_repo()
 {
     dir=$1
     [ -d "$dir/refs" ] && [ -d "$dir/objects" ] && [ -f "$dir/HEAD" ];
+}
+
+is_example_repo()
+{
+    dir="$1";
+    [ -d "$dir/repotools" ];
 }
 
 read_description()
