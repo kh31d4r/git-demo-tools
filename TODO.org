@@ -1,0 +1,11 @@
+* Save repo example
+  Save current repo in =$EXAMPLEREPOS= with name given by argument.
+* List repo examples
+  Show all available repos in =$EXAMPLEREPOS=.
+* Safety check
+  Put a file in =.git= when saving repos, and only replace repos which
+  have the file.
+* Repo description
+  Keep a description of each repo in a file in =.git=.
+  - Write the description when saving.
+  - Show the description when listing repos.
