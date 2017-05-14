@@ -38,3 +38,12 @@ save_current_repo()
     mkdir -p $repo_basedir;
     cp -r .git/* $repo_basedir;
 }
+
+list_repos()
+{
+    for dir in $EXAMPLEREPOS/*; do
+        if [ -d "$dir/refs" ] && [ -d "$dir/objects" ] && [ -f "$dir/HEAD" ]; then
+            echo $(basename $dir);
+        fi
+    done
+}

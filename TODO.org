@@ -1,5 +1,3 @@
-* List repo examples
-  Show all available repos in =$EXAMPLEREPOS=.
 * Safety check
   Put a file in =.git= when saving repos, and only replace repos which
   have the file.

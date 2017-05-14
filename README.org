@@ -21,6 +21,7 @@
    - The =git repo-save= command takes the name of a new example
      repository as an argument, and saves the current repository as
      that name.
+   - The =git repo-list= command lists all saved example repositories.
 
 *** Example repository structure
     Repositories are stored in the path specified by =$EXAMPLEREPOS=,
