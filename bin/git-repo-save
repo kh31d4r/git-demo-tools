@@ -7,6 +7,7 @@ basedir=$(dirname "$0");
 ensure_config;
 ensure_notempty "repo-name" $1;
 repo_name=$1;
+description="$2";
 
 find_repo_root;
-save_current_repo $repo_name;
+save_current_repo $repo_name "$description";

@@ -34,16 +34,21 @@ replace_current_repo()
 save_current_repo()
 {
     repo_basedir=$EXAMPLEREPOS/$1;
-    rm -rf $repo_basedir;
-    mkdir -p $repo_basedir;
+    description="$2";
+    rm -rf "$repo_basedir";
+    mkdir -p "$repo_basedir";
+    mkdir -p .git/repotools;
+    echo "$description" > .git/repotools/description;
     cp -r .git/* $repo_basedir;
 }
 
 list_repos()
 {
     for dir in $EXAMPLEREPOS/*; do
-        if is_repo $dir; then
-            echo $(basename $dir);
+        if is_repo "$dir"; then
+            repo=$(basename "$dir");
+            description=$(read_description "$dir");
+            printf "%-20s %s\n" "$repo" "$description";
         fi
     done
 }
@@ -52,4 +57,15 @@ is_repo()
 {
     dir=$1
     [ -d "$dir/refs" ] && [ -d "$dir/objects" ] && [ -f "$dir/HEAD" ];
+}
+
+read_description()
+{
+    dir="$1"
+    descriptionFile="$dir/repotools/description";
+    if [ -f $descriptionFile ]; then
+        cat $descriptionFile;
+    else
+        echo "";
+    fi
 }
