@@ -1,4 +1,1 @@
-* Safety check
-  Put a file in =.git= when saving repos, and only replace repos which
-  have the file.
 * Proper packaging
