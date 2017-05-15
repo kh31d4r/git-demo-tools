@@ -1,1 +1,4 @@
-* Proper packaging
+#+TITLE: TODO
+
+- Proper packaging
+- Bundle some example repositories
