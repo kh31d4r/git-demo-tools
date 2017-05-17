@@ -31,11 +31,9 @@ replace_current_repo()
     fi
 
     rm -rf "$repo" *;
-    init_repo;
-    cp -r "$EXAMPLEREPOS/$1/repotools" .git;
-    git remote add origin "$EXAMPLEREPOS/$1";
-    git pull -q origin master;
-    git remote rm origin;
+    mkdir .git;
+    cp -r $EXAMPLEREPOS/$1/metadata/* .git;
+    cp -r $EXAMPLEREPOS/$1/tree/* .;
 }
 
 save_current_repo()
@@ -43,16 +41,18 @@ save_current_repo()
     repo_basedir="$EXAMPLEREPOS/$1";
     description="$2";
     rm -rf "$repo_basedir";
-    mkdir -p "$repo_basedir";
-    mkdir -p .git/repotools;
-    echo "$description" > .git/repotools/description;
-    cp -r .git/* "$repo_basedir";
+    mkdir -p $repo_basedir/{tree,metadata};
+    cp -r * "$repo_basedir/tree";
+    cp -r .git/* "$repo_basedir/metadata"
+
+    mkdir -p "$repo_basedir/metadata/repotools";
+    echo "$description" > "$repo_basedir/metadata/repotools/description";
 }
 
 list_repos()
 {
     for dir in $EXAMPLEREPOS/*; do
-        if is_repo "$dir"; then
+        if [ -d "$dir" ]; then
             repo=$(basename "$dir");
             description=$(read_description "$dir");
             printf "%-20s %s\n" "$repo" "$description";
@@ -75,7 +75,7 @@ is_example_repo()
 read_description()
 {
     dir="$1"
-    descriptionFile="$dir/repotools/description";
+    descriptionFile="$dir/metadata/repotools/description";
     if [ -f $descriptionFile ]; then
         cat $descriptionFile;
     else
